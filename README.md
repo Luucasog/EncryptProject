@@ -25,7 +25,7 @@ Para configurar o projeto será necessário a instalação de:
 
 ## Contribuidores
 
-Projeto desenvolvido para matéria de Segurança e Auditoria de Sistemas pelos alunos Lucas Galdino (RA 21477068), Felipe Magalhães (RA 20965325) e Eduardo Tessarin ()
+Projeto desenvolvido para matéria de Segurança e Auditoria de Sistemas pelos alunos Lucas Galdino (RA 21477068), Felipe Magalhães (RA 20965325) e Eduardo Tessarin (RA 21477237)
 
 ## Links
 
