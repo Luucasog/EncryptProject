@@ -2,12 +2,15 @@ import java.io.File;
 import org.apache.commons.io.FilenameUtils;
 
 public class CryptoUtilsTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CryptoException {
         String username = System.getProperty("user.name");
         String file = "C:\\Users\\" + username + "\\Documents\\criptografia";
         String key = "Arquivo seguro!!";
-        File inputFile = new File(file);
         try {
+            File inputFile = new File(file);
+            if(!inputFile.exists()){
+                throw new NotFoundException();
+            }
             for (final File fileEntry : inputFile.listFiles()) {
                 String encryptedFilePath =  "C:\\Users\\" + username + "\\Documents\\criptografia\\encrypt\\";
                 if(!new File(encryptedFilePath).exists()){
@@ -19,17 +22,19 @@ public class CryptoUtilsTest {
                 }
 
                 File encryptedFile = new File(encryptedFilePath + fileEntry.getName() + ".Encrypted");
-                File decryptedFile = new File( decryptedFilePath + fileEntry.getName() + ".Decrypted.");
+                File encryptedFile2 = new File(encryptedFilePath + fileEntry.getName());
+                File decryptedFile = new File( decryptedFilePath + fileEntry.getName() + ".");
                 if (!fileEntry.isDirectory()) {
                     String extension = FilenameUtils.getExtension(file + fileEntry.getName());
                     CryptoUtils.encrypt(key, new File(inputFile + "\\" + fileEntry.getName()), encryptedFile);
                     CryptoUtils.decrypt(key, encryptedFile, new File(decryptedFile + extension));
                 }
             }
-
+            System.out.println("CRIPTOGRAFIA E DESCRIPTOGRAFIA executada com sucesso !!!");
         } catch (CryptoException ex) {
             System.out.println(ex.getMessage());
-            ex.printStackTrace();
+        } catch (NotFoundException e) {
+            System.out.println("Pasta CRIPTOGRAFIA não foi encontrada \n");
         }
     }
 }

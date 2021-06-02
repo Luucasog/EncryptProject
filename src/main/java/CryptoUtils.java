@@ -38,7 +38,6 @@ public class CryptoUtils {
             inputStream.read(inputBytes);
 
             byte[] outputBytes = cipher.doFinal(inputBytes);
-
             FileOutputStream outputStream = new FileOutputStream(outputFile);
             outputStream.write(outputBytes);
 
